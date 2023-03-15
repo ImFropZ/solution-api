@@ -42,7 +42,6 @@ namespace web_api.Controllers
                     break;
             }
 
-
             return Ok(new
             {
                 state
