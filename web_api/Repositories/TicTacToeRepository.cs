@@ -13,7 +13,7 @@ namespace web_api.Repositories
 
             var array = model.Pattern.ToCharArray();
 
-            if (array.Length != 9 )
+            if (array.Length != 9)
                 return false;
 
             int countX = 0;

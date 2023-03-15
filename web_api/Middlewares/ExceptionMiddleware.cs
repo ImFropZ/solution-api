@@ -13,16 +13,8 @@ namespace web_api.Middlewares
             catch (StatusCodeException e)
             {
                 context.Response.Headers.Add("Content-Type", "application/json");
-                switch (e)
-                {
-                    case NotFoundException error:
-                        context.Response.StatusCode = StatusCodes.Status404NotFound;
-                        break;
-                    case BadRequestException error:
-                        context.Response.StatusCode = StatusCodes.Status400BadRequest;
-                        break;
-                }
-                await context.Response.WriteAsync(e.Message);
+                context.Response.StatusCode = e.StatusCode;
+                await context.Response.WriteAsJsonAsync(new { message = e.Message });
             }
             catch (Exception e)
             {
